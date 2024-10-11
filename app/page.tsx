@@ -56,7 +56,7 @@ export default function Intro() {
                 position={position.location}
                 onClick={() => {
                   setOpen(true)
-                  setFocus(focus)
+                  setFocus(position)
                 }}
               >
                 <img src={position.image_url} width={32} height={32} />
