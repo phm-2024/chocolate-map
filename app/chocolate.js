@@ -279,7 +279,8 @@ export default {
     },
     {
       brand: "Royce' Chocolate",
-      image_url: 'https://example.com/royce.jpg',
+      image_url:
+        'https://img.hommi.jp/resize/500/public/images/1475634699105/a/4lk1xw3dyeu58hvd8wl5jy78q02igzj32cbjk2rj.jpg',
       description:
         "Royce' is a Japanese chocolate maker famous for its rich and creamy Nama chocolate.",
       uses_ethically_grown_cocoa: true,
@@ -292,7 +293,8 @@ export default {
     },
     {
       brand: 'Meiji Chocolate',
-      image_url: 'https://example.com/meiji.jpg',
+      image_url:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9pqw04VK_aPsn__jw6J68CCcmcXeAtgSljg&s',
       description:
         "Meiji is one of Japan's largest and oldest chocolate manufacturers, known for its variety of products.",
       uses_ethically_grown_cocoa: false,
@@ -305,7 +307,8 @@ export default {
     },
     {
       brand: 'Gonbei Confectionery',
-      image_url: 'https://example.com/gonbei.jpg',
+      image_url:
+        'https://ichibajunction.com.au/cdn/shop/products/Frozen-Fresh-Chocolate-Mont-Blanc-x4-Servings-_260g__p_720x.jpg?v=1663215187',
       description:
         'Gonbei Confectionery is a boutique Japanese chocolatier focusing on artisanal creations.',
       uses_ethically_grown_cocoa: true,
@@ -318,7 +321,7 @@ export default {
     },
     {
       brand: 'Pascati',
-      image_url: 'https://example.com/pascati.jpg',
+      image_url: 'https://m.media-amazon.com/images/I/61QdApONMTS.jpg',
       description:
         'Pascati is an Indian organic chocolate brand, known for its bean-to-bar production.',
       uses_ethically_grown_cocoa: true,
@@ -344,7 +347,8 @@ export default {
     },
     {
       brand: 'Pod Chocolate',
-      image_url: 'https://example.com/podchocolate.jpg',
+      image_url:
+        'https://assets.woolworths.com.au/images/2010/460811.jpg?impolicy=wowcdxwbjbx&w=500&h=500',
       description:
         'Pod Chocolate is an Indonesian company that crafts chocolate from locally grown cocoa beans.',
       uses_ethically_grown_cocoa: true,
@@ -357,7 +361,8 @@ export default {
     },
     {
       brand: 'Magnum Malaysia',
-      image_url: 'https://example.com/magnum-malaysia.jpg',
+      image_url:
+        'https://www.shutterstock.com/image-photo/kuala-lumpur-malaysia-february-4th-260nw-249767491.jpg',
       description:
         'Magnum Malaysia offers premium ice cream with chocolate coatings, specializing in high-quality chocolate.',
       uses_ethically_grown_cocoa: true,
@@ -370,7 +375,8 @@ export default {
     },
     {
       brand: 'Patricius Chocolates',
-      image_url: 'https://example.com/patricius.jpg',
+      image_url:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJtOQ2C5N0hU3NDNMf7tbiR60QUGvL2YMKqg&s',
       description:
         'Patricius Chocolates is a premium chocolate company from Malaysia, known for its artisanal production.',
       uses_ethically_grown_cocoa: true,
@@ -383,7 +389,8 @@ export default {
     },
     {
       brand: 'Chocolate Monggo',
-      image_url: 'https://example.com/monggo.jpg',
+      image_url:
+        'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/4/16/0fce4e47-5da4-49d6-9120-35ff7cc54d2b.png',
       description:
         'Chocolate Monggo is an Indonesian company producing premium chocolate made from Javanese cocoa.',
       uses_ethically_grown_cocoa: true,
@@ -395,21 +402,9 @@ export default {
       },
     },
     {
-      brand: 'Dar Chocolate',
-      image_url: 'https://example.com/dar.jpg',
-      description:
-        'Dar Chocolate is a South African company specializing in craft chocolates made from local ingredients.',
-      uses_ethically_grown_cocoa: true,
-      location: {
-        lat: -33.9249,
-        lng: 18.4241,
-        country: 'South Africa',
-        city: 'Cape Town',
-      },
-    },
-    {
       brand: 'Afrikoa Chocolate',
-      image_url: 'https://example.com/afrikoa.jpg',
+      image_url:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMPdKQTZfsYuzNeABAA279Ax5w_WkptxNh5A&s',
       description:
         'Afrikoa is a South African chocolate company that uses ethically sourced African cocoa.',
       uses_ethically_grown_cocoa: true,
@@ -422,7 +417,8 @@ export default {
     },
     {
       brand: 'Chocolaterie Robert',
-      image_url: 'https://example.com/robert.jpg',
+      image_url:
+        'https://images.openfoodfacts.org/images/products/600/969/153/0586/front_fr.4.full.jpg',
       description:
         'Chocolaterie Robert is a premium Madagascar-based chocolate company using local cocoa beans.',
       uses_ethically_grown_cocoa: true,
@@ -435,7 +431,8 @@ export default {
     },
     {
       brand: 'Krakakoa',
-      image_url: 'https://example.com/krakakoa.jpg',
+      image_url:
+        'https://criolloquetzal.ch/wp-content/uploads/2023/08/CriolloQuetzal-Krakakoa-100-1.png',
       description:
         'Krakakoa is an Indonesian bean-to-bar chocolate brand that supports sustainable cocoa farming.',
       uses_ethically_grown_cocoa: true,
@@ -448,7 +445,8 @@ export default {
     },
     {
       brand: 'Galler',
-      image_url: 'https://example.com/galler.jpg',
+      image_url:
+        'hhttps://images.openfoodfacts.org/images/products/541/203/812/9304/front_fr.4.full.jpg',
       description:
         'Galler is a premium Belgian chocolate maker with a factory in the Middle East, focusing on artisanal products.',
       uses_ethically_grown_cocoa: true,
@@ -460,8 +458,9 @@ export default {
       },
     },
     {
-      brand: 'Morinaga & Co.',
-      image_url: 'https://example.com/morinaga.jpg',
+      brand: 'Morinaga & Co. DARS',
+      image_url:
+        'https://m.media-amazon.com/images/I/51Kc4ntvo-L._AC_UF894,1000_QL80_.jpg',
       description:
         'Morinaga & Co. is a leading Japanese confectionery company that produces a variety of chocolates and sweets.',
       uses_ethically_grown_cocoa: false,
@@ -474,7 +473,8 @@ export default {
     },
     {
       brand: "Whittaker's",
-      image_url: 'https://example.com/whittakers.jpg',
+      image_url:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Whittaker's_Chocolate_te_reo_label.jpg/661px-Whittaker's_Chocolate_te_reo_label.jpg",
       description:
         "Whittaker's is a New Zealand-based chocolate maker known for its quality chocolate and sustainability efforts.",
       uses_ethically_grown_cocoa: true,
@@ -487,7 +487,7 @@ export default {
     },
     {
       brand: 'Manoa Chocolate',
-      image_url: 'https://example.com/manoa.jpg',
+      image_url: 'https://manoachocolate.com/cdn/shop/files/konaweb.jpg',
       description:
         'Manoa Chocolate is a Hawaiian craft chocolate maker that sources cocoa beans locally and from around the world.',
       uses_ethically_grown_cocoa: true,
@@ -500,7 +500,8 @@ export default {
     },
     {
       brand: 'Pacari Chocolate',
-      image_url: 'https://example.com/pacari.jpg',
+      image_url:
+        'https://hellochocolate.com/cdn/shop/files/pacari_chocolate_guasaya.png',
       description:
         'Pacari is an Ecuadorian chocolate brand specializing in organic and biodynamic cocoa farming.',
       uses_ethically_grown_cocoa: true,
