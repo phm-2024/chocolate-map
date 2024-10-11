@@ -1,4 +1,6 @@
-;[
+import { Position } from '@/models/chocolate'
+
+export const chocolate: Position[] = [
   {
     brand: 'Lindt',
     image_url: 'https://example.com/lindt.jpg',
