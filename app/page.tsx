@@ -13,6 +13,15 @@ export default function Intro() {
   const position = { lat: 53.54, lng: 10 }
   const [open, setOpen] = useState(false)
 
+  if (
+    !process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+    !process.env.NEXT_PUBLIC_MAP_ID
+  ) {
+    return (
+      <h1>You are experiencing an error - unable to retrieve Google Map</h1>
+    )
+  }
+
   return (
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
       <div style={{ height: '100vh', width: '100%' }}>
