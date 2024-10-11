@@ -1,5 +1,6 @@
-export default {
-  chocolate: [
+import { Position } from '@/models/chocolate'
+
+export const chocolate: Position[] = [
     {
       brand: 'Lindt',
       image_url: 'https://m.media-amazon.com/images/I/71b61lrFKXL.jpg',
