@@ -28,6 +28,9 @@ export default function Intro() {
     )
   }
 
+  const markerImage =
+    'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+
   return (
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
       <div style={{ height: '100vh', width: '100%' }}>
@@ -39,11 +42,7 @@ export default function Intro() {
           {positions.map((position: { lat: number; lng: number }) => (
             <>
               <AdvancedMarker position={position} onClick={() => setOpen(true)}>
-                <Pin
-                  background={'grey'}
-                  borderColor={'green'}
-                  glyphColor={'purple'}
-                />
+                <img src={markerImage} width={32} height={32} />
               </AdvancedMarker>
               {open && (
                 <InfoWindow
