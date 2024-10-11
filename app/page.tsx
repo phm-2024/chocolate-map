@@ -14,10 +14,22 @@ export default function Intro() {
     lat: number
     lng: number
   }[] = [
-    { lat: 53.54, lng: 10 },
+    { lat: -36.864372831981925, lng: 174.77614767136242 },
     { lat: 52, lng: 10 },
   ]
   const [open, setOpen] = useState(false)
+  const [focus, setFocus] = useState({
+    brand: 'Brand',
+    image_url: 'https://random.dog/77f957db-25ee-47d1-b44a-6918452d846a.jpg',
+    description: 'No chocolate... only dog',
+    uses_ethically_grown_cocoa: true,
+    location: {
+      lat: -36.864372831981925,
+      lng: 174.77614767136242,
+      country: 'New Zealand',
+      city: 'Auckland',
+    },
+  })
 
   if (
     !process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
@@ -38,7 +50,13 @@ export default function Intro() {
         >
           {positions.map((position: { lat: number; lng: number }) => (
             <>
-              <AdvancedMarker position={position} onClick={() => setOpen(true)}>
+              <AdvancedMarker
+                position={position}
+                onClick={() => {
+                  setOpen(true)
+                  setFocus(focus)
+                }}
+              >
                 <Pin
                   background={'grey'}
                   borderColor={'green'}
@@ -47,10 +65,17 @@ export default function Intro() {
               </AdvancedMarker>
               {open && (
                 <InfoWindow
-                  position={position}
+                  position={focus.location}
                   onCloseClick={() => setOpen(false)}
                 >
-                  <p>I'm in Hamburg</p>
+                  <p>{focus.brand}</p>
+                  <p>{`${focus.location.country}, ${focus.location.city}`}</p>
+                  <img src={focus.image_url} style={{ width: '200px' }} />
+                  <p>{focus.description}</p>
+                  <p>
+                    Uses ethically grown cocoa?{' '}
+                    {focus.uses_ethically_grown_cocoa ? 'Yes' : 'No'}
+                  </p>
                 </InfoWindow>
               )}
             </>
