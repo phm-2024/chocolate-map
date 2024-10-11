@@ -47,7 +47,7 @@ export default function Intro() {
       <div style={{ height: '100vh', width: '100%' }}>
         <Map
           defaultZoom={9}
-          defaultCenter={chocolate[0].location}
+          defaultCenter={focus.location}
           mapId={process.env.NEXT_PUBLIC_MAP_ID}
         >
           {chocolate.map((position: Position) => (
