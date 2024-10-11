@@ -10,7 +10,13 @@ import {
 } from '@vis.gl/react-google-maps'
 
 export default function Intro() {
-  const position = { lat: 53.54, lng: 10 }
+  const positions: {
+    lat: number
+    lng: number
+  }[] = [
+    { lat: 53.54, lng: 10 },
+    { lat: 52, lng: 10 },
+  ]
   const [open, setOpen] = useState(false)
 
   if (
@@ -27,22 +33,28 @@ export default function Intro() {
       <div style={{ height: '100vh', width: '100%' }}>
         <Map
           defaultZoom={9}
-          defaultCenter={position}
+          defaultCenter={positions[0]}
           mapId={process.env.NEXT_PUBLIC_MAP_ID}
         >
-          <AdvancedMarker position={position} onClick={() => setOpen(true)}>
-            <Pin
-              background={'grey'}
-              borderColor={'green'}
-              glyphColor={'purple'}
-            />
-          </AdvancedMarker>
-
-          {open && (
-            <InfoWindow position={position} onCloseClick={() => setOpen(false)}>
-              <p>I'm in Hamburg</p>
-            </InfoWindow>
-          )}
+          {positions.map((position: { lat: number; lng: number }) => (
+            <>
+              <AdvancedMarker position={position} onClick={() => setOpen(true)}>
+                <Pin
+                  background={'grey'}
+                  borderColor={'green'}
+                  glyphColor={'purple'}
+                />
+              </AdvancedMarker>
+              {open && (
+                <InfoWindow
+                  position={position}
+                  onCloseClick={() => setOpen(false)}
+                >
+                  <p>I'm in Hamburg</p>
+                </InfoWindow>
+              )}
+            </>
+          ))}
         </Map>
       </div>
     </APIProvider>
