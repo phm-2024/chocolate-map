@@ -8,15 +8,10 @@ import {
   Pin,
   InfoWindow,
 } from '@vis.gl/react-google-maps'
+import { Position } from '@/models/chocolate'
+import { chocolate } from './chocolate'
 
 export default function Intro() {
-  const positions: {
-    lat: number
-    lng: number
-  }[] = [
-    { lat: 53.54, lng: 10 },
-    { lat: 52, lng: 10 },
-  ]
   const [open, setOpen] = useState(false)
 
   if (
@@ -33,21 +28,20 @@ export default function Intro() {
       <div style={{ height: '100vh', width: '100%' }}>
         <Map
           defaultZoom={9}
-          defaultCenter={positions[0]}
+          defaultCenter={chocolate[0].location}
           mapId={process.env.NEXT_PUBLIC_MAP_ID}
         >
-          {positions.map((position: { lat: number; lng: number }) => (
+          {chocolate.map((position: Position) => (
             <>
-              <AdvancedMarker position={position} onClick={() => setOpen(true)}>
-                <Pin
-                  background={'grey'}
-                  borderColor={'green'}
-                  glyphColor={'purple'}
-                />
+              <AdvancedMarker
+                position={position.location}
+                onClick={() => setOpen(true)}
+              >
+                <img src={position.image_url} width={32} height={32} />
               </AdvancedMarker>
               {open && (
                 <InfoWindow
-                  position={position}
+                  position={position.location}
                   onCloseClick={() => setOpen(false)}
                 >
                   <p>I'm in Hamburg</p>
