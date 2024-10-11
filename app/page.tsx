@@ -67,7 +67,7 @@ export default function Intro() {
                 position={position.location}
                 onClick={() => setOpen(true)}
               >
-                <img src={markerImage} width={32} height={32} />
+                <img src={position.image_url} width={32} height={32} />
               </AdvancedMarker>
               {open && (
                 <InfoWindow
