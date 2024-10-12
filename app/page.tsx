@@ -44,11 +44,8 @@ export default function Intro() {
           mapId={process.env.NEXT_PUBLIC_MAP_ID}
           onCameraChanged={(event) => setZoomLevel(event.detail.zoom)}
         >
-          {chocolate.map((position: Position) => {
-            console.log('zoom level:' + zoomLevel)
-
+          {chocolate.map((position: Position, i: number) => {
             const markerSize = Math.max(20, zoomLevel * 5)
-            console.log('marker size:' + markerSize)
 
             return (
               <AdvancedMarker
@@ -57,9 +54,10 @@ export default function Intro() {
                   setOpen(true)
                   setFocus(position)
                 }}
+                key={i}
               >
                 <img
-                  src={position.image_url}
+                  src="/images/choc_icon.png"
                   width={markerSize}
                   height={markerSize}
                 />
@@ -76,8 +74,8 @@ export default function Intro() {
               <img src={focus.image_url} style={{ width: '200px' }} />
               <p>{focus.description}</p>
               <p>
-                Uses ethically grown cocoa?{' '}
-                {focus.uses_ethically_grown_cocoa ? 'Yes' : 'No'}
+                Uses ethically grown cocoa?
+                {focus.uses_ethically_grown_cocoa ? ' Yes' : ' No'}
               </p>
             </InfoWindow>
           )}
