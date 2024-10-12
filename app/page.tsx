@@ -12,14 +12,15 @@ import { chocolate } from './chocolate'
 
 export default function Intro() {
   const [open, setOpen] = useState(false)
+  const [zoomLevel, setZoomLevel] = useState(9)
   const [focus, setFocus] = useState({
     brand: 'Brand',
     image_url: 'https://random.dog/77f957db-25ee-47d1-b44a-6918452d846a.jpg',
     description: 'No chocolate... only dog',
     uses_ethically_grown_cocoa: true,
     location: {
-      lat: -36.864372831981925,
-      lng: 174.77614767136242,
+      lat: -41.22599343392186,
+      lng: 174.75733413578783,
       country: 'New Zealand',
       city: 'Auckland',
     },
@@ -42,12 +43,14 @@ export default function Intro() {
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
       <div style={{ height: '100vh', width: '100%' }}>
         <Map
-          defaultZoom={9}
-          defaultCenter={currLocation}
+          defaultZoom={zoomLevel}
+          defaultCenter={focus.location}
           mapId={process.env.NEXT_PUBLIC_MAP_ID}
+          onCameraChanged={(event) => setZoomLevel(event.detail.zoom)}
         >
-          {chocolate.map((position: Position, i: number) => (
-            <>
+          {chocolate.map((position: Position, i: number) => {
+            const markerSize = Math.max(20, zoomLevel * 10)
+            return (
               <AdvancedMarker
                 position={position.location}
                 onClick={() => {
@@ -56,23 +59,39 @@ export default function Intro() {
                 }}
                 key={i}
               >
-                <img src="/images/choc_icon.png" width={32} height={32} />
+                <img
+                  src="/images/choc_icon.png"
+                  width={markerSize}
+                  height={markerSize}
+                  className="hover:opacity-50"
+                />
               </AdvancedMarker>
-            </>
-          ))}
+            )
+          })}
           {open && (
             <InfoWindow
               position={focus.location}
               onCloseClick={() => setOpen(false)}
+              maxWidth={400}
             >
-              <p>{focus.brand}</p>
-              <p>{`${focus.location.country}, ${focus.location.city}`}</p>
-              <img src={focus.image_url} style={{ width: '200px' }} />
-              <p>{focus.description}</p>
-              <p>
-                Uses ethically grown cocoa?
-                {focus.uses_ethically_grown_cocoa ? ' Yes' : ' No'}
-              </p>
+              <div className="flex">
+                <div className="w-[70%]">
+                  <p className={'underline text-2xl font-bold'}>
+                    {focus.brand}
+                  </p>
+                  <p
+                    className={'font-bold pb-4'}
+                  >{`@${focus.location.country}, ${focus.location.city}`}</p>
+
+                  <p className={'text-lg pb-4'}>{focus.description}</p>
+                  {focus.uses_ethically_grown_cocoa && (
+                    <p>✨ They use ethically grown cocoa</p>
+                  )}
+                </div>
+                <div className="w-[30%] flex items-center">
+                  <img src={focus.image_url} style={{ width: '100%' }} />
+                </div>
+              </div>
             </InfoWindow>
           )}
         </Map>
