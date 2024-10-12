@@ -67,15 +67,26 @@ export default function Intro() {
             <InfoWindow
               position={focus.location}
               onCloseClick={() => setOpen(false)}
+              maxWidth={400}
             >
-              <p>{focus.brand}</p>
-              <p>{`${focus.location.country}, ${focus.location.city}`}</p>
-              <img src={focus.image_url} style={{ width: '200px' }} />
-              <p>{focus.description}</p>
-              <p>
-                Uses ethically grown cocoa?{' '}
-                {focus.uses_ethically_grown_cocoa ? 'Yes' : 'No'}
-              </p>
+              <div className="flex">
+                <div className="w-[70%]">
+                  <p className={'underline text-2xl font-bold'}>
+                    {focus.brand}
+                  </p>
+                  <p
+                    className={'font-bold pb-4'}
+                  >{`@${focus.location.country}, ${focus.location.city}`}</p>
+
+                  <p className={'text-lg pb-4'}>{focus.description}</p>
+                  {focus.uses_ethically_grown_cocoa && (
+                    <p>✨ They use ethically grown cocoa</p>
+                  )}
+                </div>
+                <div className="w-[30%] flex items-center">
+                  <img src={focus.image_url} style={{ width: '100%' }} />
+                </div>
+              </div>
             </InfoWindow>
           )}
         </Map>
