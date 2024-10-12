@@ -45,8 +45,7 @@ export default function Intro() {
           onCameraChanged={(event) => setZoomLevel(event.detail.zoom)}
         >
           {chocolate.map((position: Position, i: number) => {
-            const markerSize = Math.max(20, zoomLevel * 5)
-
+            const markerSize = Math.max(20, zoomLevel * 10)
             return (
               <AdvancedMarker
                 position={position.location}
@@ -60,6 +59,7 @@ export default function Intro() {
                   src="/images/choc_icon.png"
                   width={markerSize}
                   height={markerSize}
+                  className="hover:opacity-50"
                 />
               </AdvancedMarker>
             )
