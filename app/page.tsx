@@ -5,21 +5,14 @@ import {
   APIProvider,
   Map,
   AdvancedMarker,
-  Pin,
   InfoWindow,
 } from '@vis.gl/react-google-maps'
 import { Position } from '@/models/chocolate'
 import { chocolate } from './chocolate'
 
 export default function Intro() {
-  const positions: {
-    lat: number
-    lng: number
-  }[] = [
-    { lat: -36.864372831981925, lng: 174.77614767136242 },
-    { lat: 52, lng: 10 },
-  ]
   const [open, setOpen] = useState(false)
+  const [zoomLevel, setZoomLevel] = useState(9)
   const [focus, setFocus] = useState({
     brand: 'Brand',
     image_url: 'https://random.dog/77f957db-25ee-47d1-b44a-6918452d846a.jpg',
@@ -46,12 +39,18 @@ export default function Intro() {
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
       <div style={{ height: '100vh', width: '100%' }}>
         <Map
-          defaultZoom={9}
+          defaultZoom={zoomLevel}
           defaultCenter={focus.location}
           mapId={process.env.NEXT_PUBLIC_MAP_ID}
+          onCameraChanged={(event) => setZoomLevel(event.detail.zoom)}
         >
-          {chocolate.map((position: Position) => (
-            <>
+          {chocolate.map((position: Position) => {
+            console.log('zoom level:' + zoomLevel)
+
+            const markerSize = Math.max(20, zoomLevel * 5)
+            console.log('marker size:' + markerSize)
+
+            return (
               <AdvancedMarker
                 position={position.location}
                 onClick={() => {
@@ -59,10 +58,14 @@ export default function Intro() {
                   setFocus(position)
                 }}
               >
-                <img src={position.image_url} width={32} height={32} />
+                <img
+                  src={position.image_url}
+                  width={markerSize}
+                  height={markerSize}
+                />
               </AdvancedMarker>
-            </>
-          ))}
+            )
+          })}
           {open && (
             <InfoWindow
               position={focus.location}
