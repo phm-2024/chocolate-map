@@ -25,6 +25,10 @@ export default function Intro() {
     },
   })
 
+  const currLocation = { lat: -36.864372831981925, lng: 174.77614767136242 }
+
+  // navigator.geolocation.getCurrentPosition(function (position) {})
+
   if (
     !process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
     !process.env.NEXT_PUBLIC_MAP_ID
@@ -39,7 +43,7 @@ export default function Intro() {
       <div style={{ height: '100vh', width: '100%' }}>
         <Map
           defaultZoom={9}
-          defaultCenter={focus.location}
+          defaultCenter={currLocation}
           mapId={process.env.NEXT_PUBLIC_MAP_ID}
         >
           {chocolate.map((position: Position, i: number) => (
