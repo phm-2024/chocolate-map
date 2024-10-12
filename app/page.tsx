@@ -18,6 +18,7 @@ export default function Intro() {
     image_url: 'https://random.dog/77f957db-25ee-47d1-b44a-6918452d846a.jpg',
     description: 'No chocolate... only dog',
     uses_ethically_grown_cocoa: true,
+    link: 'https://random.dog',
     location: {
       lat: -36.864372831981925,
       lng: 174.75733413578783,
@@ -86,7 +87,7 @@ export default function Intro() {
               <div className="flex">
                 <div className="w-[70%]">
                   <p className={'underline text-2xl font-bold'}>
-                    {focus.brand}
+                    <a href={focus.link}>{focus.brand}</a>
                   </p>
                   <p
                     className={'font-bold pb-4'}
