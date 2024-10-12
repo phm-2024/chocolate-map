@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   APIProvider,
   Map,
@@ -19,16 +19,25 @@ export default function Intro() {
     description: 'No chocolate... only dog',
     uses_ethically_grown_cocoa: true,
     location: {
-      lat: -41.22599343392186,
+      lat: -36.864372831981925,
       lng: 174.75733413578783,
       country: 'New Zealand',
       city: 'Auckland',
     },
   })
-
-  const currLocation = { lat: -36.864372831981925, lng: 174.77614767136242 }
-
-  // navigator.geolocation.getCurrentPosition(function (position) {})
+  const [currLocation, setCurrLocation] = useState({
+    lat: -41.22599343392186,
+    lng: 174.77614767136242,
+  })
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      position &&
+        setCurrLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        })
+    })
+  }, [])
 
   if (
     !process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
@@ -44,7 +53,7 @@ export default function Intro() {
       <div style={{ height: '100vh', width: '100%' }}>
         <Map
           defaultZoom={zoomLevel}
-          defaultCenter={focus.location}
+          defaultCenter={currLocation}
           mapId={process.env.NEXT_PUBLIC_MAP_ID}
           onCameraChanged={(event) => setZoomLevel(event.detail.zoom)}
         >
@@ -89,7 +98,11 @@ export default function Intro() {
                   )}
                 </div>
                 <div className="w-[30%] flex items-center">
-                  <img src={focus.image_url} style={{ width: '100%' }} />
+                  <img
+                    src={focus.image_url}
+                    alt={focus.image_url}
+                    style={{ width: '100%' }}
+                  />
                 </div>
               </div>
             </InfoWindow>
