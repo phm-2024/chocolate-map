@@ -3,6 +3,7 @@ export interface Position {
   image_url: string
   description: string
   uses_ethically_grown_cocoa: boolean
+  link: string
   location: Location
 }
 
