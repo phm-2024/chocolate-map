@@ -19,8 +19,8 @@ export default function Intro() {
     description: 'No chocolate... only dog',
     uses_ethically_grown_cocoa: true,
     location: {
-      lat: -36.864372831981925,
-      lng: 174.77614767136242,
+      lat: -41.22599343392186,
+      lng: 174.75733413578783,
       country: 'New Zealand',
       city: 'Auckland',
     },
