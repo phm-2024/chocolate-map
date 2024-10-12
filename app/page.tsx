@@ -5,20 +5,12 @@ import {
   APIProvider,
   Map,
   AdvancedMarker,
-  Pin,
   InfoWindow,
 } from '@vis.gl/react-google-maps'
 import { Position } from '@/models/chocolate'
 import { chocolate } from './chocolate'
 
 export default function Intro() {
-  const positions: {
-    lat: number
-    lng: number
-  }[] = [
-    { lat: -36.864372831981925, lng: 174.77614767136242 },
-    { lat: 52, lng: 10 },
-  ]
   const [open, setOpen] = useState(false)
   const [focus, setFocus] = useState({
     brand: 'Brand',
@@ -50,7 +42,7 @@ export default function Intro() {
           defaultCenter={focus.location}
           mapId={process.env.NEXT_PUBLIC_MAP_ID}
         >
-          {chocolate.map((position: Position) => (
+          {chocolate.map((position: Position, i: number) => (
             <>
               <AdvancedMarker
                 position={position.location}
@@ -58,8 +50,9 @@ export default function Intro() {
                   setOpen(true)
                   setFocus(position)
                 }}
+                key={i}
               >
-                <img src={position.image_url} width={32} height={32} />
+                <img src="/images/choc_icon.png" width={32} height={32} />
               </AdvancedMarker>
             </>
           ))}
@@ -73,8 +66,8 @@ export default function Intro() {
               <img src={focus.image_url} style={{ width: '200px' }} />
               <p>{focus.description}</p>
               <p>
-                Uses ethically grown cocoa?{' '}
-                {focus.uses_ethically_grown_cocoa ? 'Yes' : 'No'}
+                Uses ethically grown cocoa?
+                {focus.uses_ethically_grown_cocoa ? ' Yes' : ' No'}
               </p>
             </InfoWindow>
           )}
