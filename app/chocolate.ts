@@ -447,7 +447,7 @@ export const chocolate: Position[] = [
   {
     brand: 'Galler',
     image_url:
-      'hhttps://images.openfoodfacts.org/images/products/541/203/812/9304/front_fr.4.full.jpg',
+      'https://images.openfoodfacts.org/images/products/541/203/812/9304/front_fr.4.full.jpg',
     description:
       'Galler is a premium Belgian chocolate maker with a factory in the Middle East, focusing on artisanal products.',
     uses_ethically_grown_cocoa: true,
