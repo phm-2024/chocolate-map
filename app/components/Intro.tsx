@@ -75,7 +75,7 @@ export default function Intro() {
               </AdvancedMarker>
             )
           })}
-          {open && <InfoBox />}
+          {open && <InfoBox focus={focus} />}
         </Map>
       </div>
     </APIProvider>
