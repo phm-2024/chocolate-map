@@ -35,15 +35,15 @@ export default function Intro({ searchTerm }: IntroProps) {
   )
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      position &&
-        setCurrLocation({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        })
-    })
-
-    if (foundChoc) {
+    if (searchTerm === '') {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        position &&
+          setCurrLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          })
+      })
+    } else if (foundChoc) {
       setFocus(foundChoc)
       setOpen(true)
     }
