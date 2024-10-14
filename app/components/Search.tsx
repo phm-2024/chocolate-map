@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Intro from './Intro'
 
 const Search = () => {
   const [search, setSearch] = useState('')
@@ -13,15 +14,22 @@ const Search = () => {
     const { value } = target.search
 
     setSearch(value)
-    console.log(value)
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="search" placeholder="Search your chocolate" />
+  useEffect(() => {
+    return () => setSearch('')
+  }, [])
 
-      <button>Search</button>
-    </form>
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="search" placeholder="Search your chocolate" />
+
+        <button>Search</button>
+      </form>
+
+      {search ? <Intro searchTerm={search} /> : <Intro searchTerm="" />}
+    </>
   )
 }
 
