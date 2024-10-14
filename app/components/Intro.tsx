@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react'
 import { APIProvider, Map, AdvancedMarker } from '@vis.gl/react-google-maps'
 import { Position } from '@/models/chocolate'
 import { chocolate } from '../chocolate'
-
 import InfoBox from './InfoBox'
 
-export default function Intro() {
+interface IntroProps {
+  searchTerm: string
+}
+
+export default function Intro({ searchTerm }: IntroProps) {
   const [open, setOpen] = useState(false)
   const [zoomLevel, setZoomLevel] = useState(9)
   const [focus, setFocus] = useState({
@@ -35,7 +38,12 @@ export default function Intro() {
           lng: position.coords.longitude,
         })
     })
-  }, [])
+    const foundChoc = chocolate.find((choc) => choc.brand === searchTerm)
+    if (foundChoc) {
+      setFocus(foundChoc)
+      setOpen(true)
+    }
+  }, [searchTerm])
 
   if (
     !process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
