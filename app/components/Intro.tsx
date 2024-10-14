@@ -30,6 +30,10 @@ export default function Intro({ searchTerm }: IntroProps) {
     lat: -41.22599343392186,
     lng: 174.77614767136242,
   })
+  const foundChoc = chocolate.find((choc) =>
+    choc.brand.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       position &&
@@ -38,7 +42,7 @@ export default function Intro({ searchTerm }: IntroProps) {
           lng: position.coords.longitude,
         })
     })
-    const foundChoc = chocolate.find((choc) => choc.brand === searchTerm)
+
     if (foundChoc) {
       setFocus(foundChoc)
       setOpen(true)
